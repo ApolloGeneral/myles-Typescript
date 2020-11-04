@@ -54,6 +54,9 @@ export default function Login() {
 
   return (
     <View style={styles.formWrapper}>
+      <ScrollView
+      style={{paddingTop:100}}
+      >
         <Formik
           initialValues={{ email: "", password: "", rememberMe: false }}
           validationSchema={LoginSchema}
@@ -185,6 +188,7 @@ export default function Login() {
             </View>
           )}
         </Formik>
+        </ScrollView>
       <Button title="aaa" onPress={() => setIsSigned(true)} />
     </View>
   );
