@@ -48,7 +48,7 @@ export const styles = StyleSheet.create({
     width: 22,
     marginRight: 4,
   },
-  PoliticsCheckbox:{
+  PoliticsCheckbox: {
     width: 22,
     marginRight: 4,
   },
@@ -57,6 +57,38 @@ export const styles = StyleSheet.create({
     fontSize: 18,
     color: "#fefefe",
   },
+  CardContext: {
+    backgroundColor: "#421ab6",
+    width: "90%",
+    height: 170,
+    alignItems:"stretch",
+    borderRadius: 10,
+    flexDirection:"row"
+  },
+  ViewImageCard:{
+    justifyContent:"center",
+    width:"50%"
+  },
+  ImageCard: {
+    width: 150,
+    height: 70,
+    borderRadius: 8,
+    margin: 10,
+    
+  },
+  ViewTextCard:{
+    alignItems:"center",
+    width:"50%",
+    justifyContent:"space-evenly"
+
+  },
+  TextCard:{
+    color:"#fff",
+    alignItems:"center",
+    
+    
+
+  }
 });
 
 /* Obj Styles */
@@ -81,3 +113,4 @@ export const labelInput = {
   leftFocused: -6,
   topFocused: -24,
 };
+

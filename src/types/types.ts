@@ -1,13 +1,11 @@
-export interface IPrices {
-    pre?: number,
-    pos?: number,
-    "1k"?: number
-}
 
 export interface ICompany {
-    company?: string,
-    quantity?: number,
-    prices?: IPrices
+    active: boolean
+    logo:string
+    name: string
+    posPrice: number
+    prePrice: number
+    quantity: number
 }
 
 export interface IUserContext { 
