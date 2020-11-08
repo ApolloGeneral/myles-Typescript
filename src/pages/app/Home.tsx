@@ -37,6 +37,7 @@ export default function Home() {
         <>
           <MilePriceCard
           company={companies[0]}
+          
           />
         </>
       ) : (

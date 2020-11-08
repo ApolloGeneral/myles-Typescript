@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { Platform, StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   errorModal: {
@@ -57,36 +57,51 @@ export const styles = StyleSheet.create({
     fontSize: 18,
     color: "#fefefe",
   },
+  // CARD
   CardContext: {
-    backgroundColor: "#421ab6",
+    backgroundColor: "#f1f1f1f1",
     width: "90%",
     height: 170,
-    alignItems:"stretch",
+    alignItems: "stretch",
     borderRadius: 10,
-    flexDirection:"row"
+    flexDirection: "row",
+    ...Platform.select({
+      ios: {
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 7,
+        },
+        shadowOpacity: 0.43,
+        shadowRadius: 9.51,
+      },
+      android: {
+        elevation: 15
+      }
+    })
   },
-  ViewImageCard:{
-    justifyContent:"center",
-    width:"50%"
+  ViewImageCard: {
+    justifyContent: "center",
+    width: "50%"
   },
   ImageCard: {
-    width: 150,
-    height: 70,
+    width: 120,
+    height: 60,
     borderRadius: 8,
     margin: 10,
     
-  },
-  ViewTextCard:{
-    alignItems:"center",
-    width:"50%",
-    justifyContent:"space-evenly"
 
   },
-  TextCard:{
-    color:"#fff",
-    alignItems:"center",
-    
-    
+  ViewTextCard: {
+    alignItems: "flex-start",
+    width: "50%",
+    justifyContent: "space-evenly",
+
+  },
+  TextCard: {
+    color: "#000000",
+    marginLeft: 10,
+    marginVertical: -15
 
   }
 });
