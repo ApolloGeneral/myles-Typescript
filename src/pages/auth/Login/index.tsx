@@ -15,6 +15,7 @@ import Icon from "react-native-vector-icons/FontAwesome";
 
 import { Formik } from "formik";
 import * as Yup from "yup";
+import { handleLogin } from "../../../services/apis";
 
 export default function Login() {
   /* States */
@@ -26,9 +27,7 @@ export default function Login() {
   const rememberRef = useRef<any>(null);
 
   const LoginSchema = Yup.object().shape({
-    email: Yup.string() // Tipo do campo
-      .email("Por favor, digite um email válido") // Tipo de verificação e mensagem de erro
-      .required("Por favor, digite seu email"), // Se ele é obrigatorio ou não
+    username: Yup.string().required("Por favor, digite seu username"),
     password: Yup.string().required("Digite sua senha"),
   });
 
@@ -40,12 +39,13 @@ export default function Login() {
     alert("Sign Up!");
   };
 
-  const handleLogin = (values: {
-    email: string;
+  const handleLoginButton = (values: {
+    username: string;
     password: string;
     rememberMe: boolean;
   }) => {
     if (values) {
+      handleLogin({ username: values.username, password: values.password });
       console.log("login ok", values);
     } else {
       console.log("login error");
@@ -54,13 +54,11 @@ export default function Login() {
 
   return (
     <View style={styles.formWrapper}>
-      <ScrollView
-      style={{paddingTop:100}}
-      >
+      <ScrollView style={{ paddingTop: 100 }}>
         <Formik
-          initialValues={{ email: "", password: "", rememberMe: false }}
+          initialValues={{ username: "", password: "", rememberMe: false }}
           validationSchema={LoginSchema}
-          onSubmit={(values) => handleLogin(values)}
+          onSubmit={(values) => handleLoginButton(values)}
         >
           {({ handleChange, handleSubmit, values, errors }) => (
             <View style={styles.formContainer}>
@@ -73,25 +71,25 @@ export default function Login() {
                 <FloatingLabelInput
                   containerStyles={{
                     ...inputStyle,
-                    borderColor: errors.email ? "#FF4842" : "#fefefe",
+                    borderColor: errors.username ? "#FF4842" : "#fefefe",
                   }}
                   inputStyles={{
                     ...inputTextStyle,
-                    color: errors.email ? "#FF4842" : "#fefefe",
+                    color: errors.username ? "#FF4842" : "#fefefe",
                   }}
                   customLabelStyles={{
                     ...labelInput,
-                    colorFocused: errors.email ? "#FF4842" : "#fefefe",
-                    colorBlurred: errors.email ? "#FF484260" : "#fefefe60",
+                    colorFocused: errors.username ? "#FF4842" : "#fefefe",
+                    colorBlurred: errors.username ? "#FF484260" : "#fefefe60",
                   }}
-                  label={"Email:"}
-                  value={values.email}
-                  onChangeText={handleChange("email")}
+                  label={"User:"}
+                  value={values.username}
+                  onChangeText={handleChange("username")}
                 />
-                {errors.email ? (
+                {errors.username ? (
                   <View style={styles.errorModal}>
                     <Text style={styles.errorText}>
-                      {errors.email && "\n" + errors.email}
+                      {errors.username && "\n" + errors.username}
                     </Text>
                   </View>
                 ) : null}
@@ -188,7 +186,7 @@ export default function Login() {
             </View>
           )}
         </Formik>
-        </ScrollView>
+      </ScrollView>
       <Button title="aaa" onPress={() => setIsSigned(true)} />
     </View>
   );
