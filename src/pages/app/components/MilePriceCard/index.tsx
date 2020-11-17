@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Image, Text, View } from "react-native"
+import { Image, ScrollView, Text, View } from "react-native"
 import { styles } from '../../../../styles/styles';
 
 import { ICompany } from '../../../../types/types';

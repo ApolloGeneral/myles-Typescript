@@ -1,7 +1,7 @@
 import { milePriceApi, loginApi } from "../utils/api"
 
 export const getMilePrice = async (company?: string) => {
-    let res = await milePriceApi.get(`${company}`)
+    let res = await milePriceApi.get(`${company ? company : ''}`)
     return res.data;
 }
 

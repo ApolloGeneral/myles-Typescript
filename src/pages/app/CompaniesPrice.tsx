@@ -11,7 +11,7 @@ import { styles } from "../../styles/styles";
 import { ICompany } from "../../types/types";
 import MilePriceCard from "./components/MilePriceCard";
 
-export default function Home({ navigation }: any) {
+export default function Home() {
   //Companies
   const [companies, setCompanies] = useState<ICompany[]>([]);
 
@@ -35,7 +35,13 @@ export default function Home({ navigation }: any) {
       <Text>Home!</Text>
       {isLoaded ? (
         <>
-         <Button title="ccc" onPress={() => navigation.navigate("MilesPrice")} />
+          <ScrollView>
+            <View style={styles.ViewCardHome}>
+              {companies.map(company =>
+                <MilePriceCard company={company} />
+              )}
+            </View>
+          </ScrollView>
         </>
       ) : (
         <>
