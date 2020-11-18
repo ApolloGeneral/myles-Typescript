@@ -11,7 +11,7 @@ import { styles } from "../../styles/styles";
 import { ICompany } from "../../types/types";
 import MilePriceCard from "./components/MilePriceCard";
 
-export default function Home() {
+export default function CompaniesPrice() {
   //Companies
   const [companies, setCompanies] = useState<ICompany[]>([]);
 
@@ -32,7 +32,7 @@ export default function Home() {
 
   return (
     <View style={styles.container}>
-      <Text>Home!</Text>
+     
       {isLoaded ? (
         <>
           <ScrollView>

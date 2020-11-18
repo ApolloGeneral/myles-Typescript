@@ -35,7 +35,7 @@ export default function Home({ navigation }: any) {
       <Text>Home!</Text>
       {isLoaded ? (
         <>
-         <Button title="ccc" onPress={() => navigation.navigate("MilesPrice")} />
+         <Button title="ccc" onPress={() => navigation.navigate("Venda suas milhas")} />
         </>
       ) : (
         <>
