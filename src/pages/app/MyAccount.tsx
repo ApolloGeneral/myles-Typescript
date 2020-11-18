@@ -8,7 +8,7 @@ import { getMilePrice } from "../../services/apis";
 import { styles } from "../../styles/styles";
 
 //Types
-import { ICompany } from "../../typings/types";
+import { ICompany } from "../../typings/myles";
 
 export default function MyAccount() {
   //Companies

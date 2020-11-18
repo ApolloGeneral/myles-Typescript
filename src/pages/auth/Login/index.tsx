@@ -1,5 +1,5 @@
 import React, { useContext, useRef, useState } from "react";
-import { Image, Button, Pressable, Text, View, ScrollView } from "react-native";
+import { Image, Pressable, Text, View, ScrollView } from "react-native";
 import { UserContext } from "../../../context/UserContext";
 import {
   styles,
@@ -16,15 +16,22 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { handleLogin } from "../../../services/apis";
+import ErrorModal from "../components/ErrorModal";
 
-export default function Login() {
+export default function Login({ navigation }: any) {
   /* States */
   const [togglePassword] = useState<boolean>(false);
+  const [loginError, setLoginError] = useState(false);
+
   /* Context */
   const { setIsSigned } = useContext<any>(UserContext);
 
   /* Refs */
   const rememberRef = useRef<any>(null);
+
+  const onPressSignUp = () => {
+    navigation.navigate("Sign Up");
+  };
 
   const LoginSchema = Yup.object().shape({
     username: Yup.string().required("Por favor, digite seu username"),
@@ -35,18 +42,20 @@ export default function Login() {
     rememberRef.current.onPress();
   };
 
-  const onPressSignUp = () => {
-    alert("Sign Up!");
-  };
-
-  const handleLoginButton = (values: {
+  const handleLoginButton = async (values: {
     username: string;
     password: string;
     rememberMe: boolean;
   }) => {
     if (values) {
-      handleLogin({ username: values.username, password: values.password });
-      console.log("login ok", values);
+      const userData = await handleLogin(values.username, values.password);
+      if (userData.error) {
+        console.log("login error", userData);
+        setLoginError(true);
+      } else {
+        console.log("login ok", userData);
+        setIsSigned(userData);
+      }
     } else {
       console.log("login error");
     }
@@ -54,7 +63,16 @@ export default function Login() {
 
   return (
     <View style={styles.formWrapper}>
-      <ScrollView style={{ paddingTop: 100 }}>
+      <ScrollView>
+        {loginError && (
+          <ErrorModal
+            type={"Login"}
+            details={
+              "Erro ao realizar login, confira seus dados e tente novamente!"
+            }
+            setter={setLoginError}
+          />
+        )}
         <Formik
           initialValues={{ username: "", password: "", rememberMe: false }}
           validationSchema={LoginSchema}
@@ -187,7 +205,6 @@ export default function Login() {
           )}
         </Formik>
       </ScrollView>
-      <Button title="aaa" onPress={() => setIsSigned(true)} />
     </View>
   );
 }
