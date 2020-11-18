@@ -8,8 +8,7 @@ import { getMilePrice } from "../../services/apis";
 import { styles } from "../../styles/styles";
 
 //Types
-import { ICompany } from "../../types/types";
-import MilePriceCard from "./components/MilePriceCard";
+import { ICompany } from "../../typings/myles";
 
 export default function Home() {
   //Companies
@@ -19,10 +18,8 @@ export default function Home() {
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
 
   useEffect(() => {
-    getMilePrice("azul").then((res: ICompany) => {
-      setCompanies((prevState) => [...prevState, res])
-      console.log(res);
-    }
+    getMilePrice("azul").then((res: ICompany) =>
+    setCompanies((prevState) => [...prevState, res])
     );
   }, []);
 
@@ -35,10 +32,9 @@ export default function Home() {
       <Text>Home!</Text>
       {isLoaded ? (
         <>
-          <MilePriceCard
-          company={companies[0]}
-          
-          />
+          <Text>Carregado!</Text>
+          <Text>{companies[0].company}</Text>
+          <Button title="aaa" onPress={() => console.log('aaa')} />
         </>
       ) : (
         <>

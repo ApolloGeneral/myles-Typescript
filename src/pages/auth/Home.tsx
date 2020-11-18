@@ -8,8 +8,6 @@ export default function Home({ navigation }: any) {
       <Text>Sign home!</Text>
       <Button title="aaa" onPress={() => navigation.navigate("Login")} />
       <Button title="bbb" onPress={() => navigation.navigate("Sign Up")} />
-      
-
     </View>
   );
 }

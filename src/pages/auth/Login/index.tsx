@@ -1,5 +1,5 @@
 import React, { useContext, useRef, useState } from "react";
-import { Image, Button, Pressable, Text, View, ScrollView } from "react-native";
+import { Image, Pressable, Text, View, ScrollView } from "react-native";
 import { UserContext } from "../../../context/UserContext";
 import {
   styles,
@@ -15,20 +15,26 @@ import Icon from "react-native-vector-icons/FontAwesome";
 
 import { Formik } from "formik";
 import * as Yup from "yup";
+import { handleLogin } from "../../../services/apis";
+import ErrorModal from "../components/ErrorModal";
 
-export default function Login() {
+export default function Login({ navigation }: any) {
   /* States */
   const [togglePassword] = useState<boolean>(false);
+  const [loginError, setLoginError] = useState(false);
+
   /* Context */
   const { setIsSigned } = useContext<any>(UserContext);
 
   /* Refs */
   const rememberRef = useRef<any>(null);
 
+  const onPressSignUp = () => {
+    navigation.navigate("Sign Up");
+  };
+
   const LoginSchema = Yup.object().shape({
-    email: Yup.string() // Tipo do campo
-      .email("Por favor, digite um email válido") // Tipo de verificação e mensagem de erro
-      .required("Por favor, digite seu email"), // Se ele é obrigatorio ou não
+    username: Yup.string().required("Por favor, digite seu username"),
     password: Yup.string().required("Digite sua senha"),
   });
 
@@ -36,17 +42,20 @@ export default function Login() {
     rememberRef.current.onPress();
   };
 
-  const onPressSignUp = () => {
-    alert("Sign Up!");
-  };
-
-  const handleLogin = (values: {
-    email: string;
+  const handleLoginButton = async (values: {
+    username: string;
     password: string;
     rememberMe: boolean;
   }) => {
     if (values) {
-      console.log("login ok", values);
+      const userData = await handleLogin(values.username, values.password);
+      if (userData.error) {
+        console.log("login error", userData);
+        setLoginError(true);
+      } else {
+        console.log("login ok", userData);
+        setIsSigned(userData);
+      }
     } else {
       console.log("login error");
     }
@@ -54,13 +63,20 @@ export default function Login() {
 
   return (
     <View style={styles.formWrapper}>
-      <ScrollView
-      style={{paddingTop:100}}
-      >
+      <ScrollView>
+        {loginError && (
+          <ErrorModal
+            type={"Login"}
+            details={
+              "Erro ao realizar login, confira seus dados e tente novamente!"
+            }
+            setter={setLoginError}
+          />
+        )}
         <Formik
-          initialValues={{ email: "", password: "", rememberMe: false }}
+          initialValues={{ username: "", password: "", rememberMe: false }}
           validationSchema={LoginSchema}
-          onSubmit={(values) => handleLogin(values)}
+          onSubmit={(values) => handleLoginButton(values)}
         >
           {({ handleChange, handleSubmit, values, errors }) => (
             <View style={styles.formContainer}>
@@ -73,25 +89,25 @@ export default function Login() {
                 <FloatingLabelInput
                   containerStyles={{
                     ...inputStyle,
-                    borderColor: errors.email ? "#FF4842" : "#fefefe",
+                    borderColor: errors.username ? "#FF4842" : "#fefefe",
                   }}
                   inputStyles={{
                     ...inputTextStyle,
-                    color: errors.email ? "#FF4842" : "#fefefe",
+                    color: errors.username ? "#FF4842" : "#fefefe",
                   }}
                   customLabelStyles={{
                     ...labelInput,
-                    colorFocused: errors.email ? "#FF4842" : "#fefefe",
-                    colorBlurred: errors.email ? "#FF484260" : "#fefefe60",
+                    colorFocused: errors.username ? "#FF4842" : "#fefefe",
+                    colorBlurred: errors.username ? "#FF484260" : "#fefefe60",
                   }}
-                  label={"Email:"}
-                  value={values.email}
-                  onChangeText={handleChange("email")}
+                  label={"User:"}
+                  value={values.username}
+                  onChangeText={handleChange("username")}
                 />
-                {errors.email ? (
+                {errors.username ? (
                   <View style={styles.errorModal}>
                     <Text style={styles.errorText}>
-                      {errors.email && "\n" + errors.email}
+                      {errors.username && "\n" + errors.username}
                     </Text>
                   </View>
                 ) : null}
@@ -188,8 +204,7 @@ export default function Login() {
             </View>
           )}
         </Formik>
-        </ScrollView>
-      <Button title="aaa" onPress={() => setIsSigned(true)} />
+      </ScrollView>
     </View>
   );
 }

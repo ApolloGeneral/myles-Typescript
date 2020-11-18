@@ -1,6 +1,36 @@
-import { Platform, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
+  loginErrorModal: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#FF4842df",
+    padding: 24,
+    marginVertical: 100,
+    margin: 32,
+    zIndex: 99,
+    borderRadius: 4,
+  },
+  loginTitleErrorModal: {
+    color: "#fefefe",
+    fontWeight: 'bold',
+    textAlign: "center",
+    fontSize: 22,
+    lineHeight: 40,
+    marginBottom: 8
+  },
+  loginTextErrorModal: {
+    color: "#fefefeef",
+    fontWeight: "500",
+    textAlign: "center",
+    fontSize: 18,
+    lineHeight: 30,
+  },
   errorModal: {
     width: 300,
     marginTop: -36,
@@ -21,6 +51,9 @@ export const styles = StyleSheet.create({
   },
   formWrapper: {
     flex: 1,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
     backgroundColor: "#481fa1",
   },
   formContainer: {
@@ -37,7 +70,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 20,
 
     backgroundColor: "#481fa160",
-    color: "#FFF",
+    color: "#fefefe",
   },
   rememberMeContainer: {
     display: "flex",
@@ -57,53 +90,6 @@ export const styles = StyleSheet.create({
     fontSize: 18,
     color: "#fefefe",
   },
-  // CARD
-  CardContext: {
-    backgroundColor: "#f1f1f1f1",
-    width: "90%",
-    height: 170,
-    alignItems: "stretch",
-    borderRadius: 10,
-    flexDirection: "row",
-    ...Platform.select({
-      ios: {
-        shadowColor: "#000",
-        shadowOffset: {
-          width: 0,
-          height: 7,
-        },
-        shadowOpacity: 0.43,
-        shadowRadius: 9.51,
-      },
-      android: {
-        elevation: 15
-      }
-    })
-  },
-  ViewImageCard: {
-    justifyContent: "center",
-    width: "50%"
-  },
-  ImageCard: {
-    width: 120,
-    height: 60,
-    borderRadius: 8,
-    margin: 10,
-    
-
-  },
-  ViewTextCard: {
-    alignItems: "flex-start",
-    width: "50%",
-    justifyContent: "space-evenly",
-
-  },
-  TextCard: {
-    color: "#000000",
-    marginLeft: 10,
-    marginVertical: -15
-
-  }
 });
 
 /* Obj Styles */
@@ -114,7 +100,7 @@ export const inputStyle = {
   paddingHorizontal: 2,
   paddingVertical: 4,
   paddingRight: 12,
-  marginBottom: 24
+  marginBottom: 24,
 };
 
 export const inputTextStyle = {
@@ -128,4 +114,3 @@ export const labelInput = {
   leftFocused: -6,
   topFocused: -24,
 };
-
