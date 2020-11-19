@@ -5,6 +5,9 @@ import React from "react";
 import Home from "../pages/auth/Home";
 import Login from "../pages/auth/Login";
 import SignUp from "../pages/auth/SignUp";
+import CompaniesPrice from "../pages/app/components/slider/index"
+
+
 
 export default function Routes() {
   const Stack = createNativeStackNavigator();
@@ -22,6 +25,7 @@ export default function Routes() {
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Sign Up" component={SignUp} />
+      <Stack.Screen name="Venda suas milhas" component={CompaniesPrice} />
     </Stack.Navigator>
   );
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 //Components
-import { Button, View, Text, ScrollView } from "react-native";
+import {  View, Text, ScrollView } from "react-native";
 
 //Services
 import { getMilePrice } from "../../services/apis";

@@ -63,7 +63,8 @@ export default function Login({ navigation }: any) {
 
   return (
     <View style={styles.formWrapper}>
-      <ScrollView>
+      
+      <ScrollView> 
         {loginError && (
           <ErrorModal
             type={"Login"}

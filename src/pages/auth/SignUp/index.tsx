@@ -72,7 +72,7 @@ export default function Login() {
 
   return (
     <View style={styles.formWrapper}>
-      <ScrollView style={{ paddingTop: 100 }}>
+      <ScrollView >
         <Formik
           initialValues={{
             name: "",

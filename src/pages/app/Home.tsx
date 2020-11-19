@@ -9,7 +9,7 @@ import { styles } from "../../styles/styles";
 
 //Types
 import { ICompany } from "../../types/types";
-import MilePriceCard from "./components/MilePriceCard";
+import Slider from "./components/slider/index";
 
 export default function Home({ navigation }: any) {
   //Companies
@@ -35,7 +35,7 @@ export default function Home({ navigation }: any) {
       <Text>Home!</Text>
       {isLoaded ? (
         <>
-         <Button title="ccc" onPress={() => navigation.navigate("Venda suas milhas")} />
+         <Slider/>
         </>
       ) : (
         <>
