@@ -2,6 +2,37 @@
 import { Platform, StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
+  loginErrorModal: {
+    position: "absolute",
+    top: '16%',
+    left: 0,
+    right: 0,
+    bottom: 0,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#FF4842df",
+    padding: 24,
+    marginVertical: 120,
+    margin: 32,
+    zIndex: 99,
+    borderRadius: 4,
+    height: 200
+  },
+  loginTitleErrorModal: {
+    color: "#fefefe",
+    fontWeight: 'bold',
+    textAlign: "center",
+    fontSize: 22,
+    lineHeight: 40,
+    marginBottom: 8
+  },
+  loginTextErrorModal: {
+    color: "#fefefeef",
+    fontWeight: "500",
+    textAlign: "center",
+    fontSize: 18,
+    lineHeight: 30,
+  },
   errorModal: {
     width: 300,
     marginTop: -36,
@@ -19,7 +50,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "space-evenly",
     alignItems: "center",
-    backgroundColor:"#ffffff"
+    backgroundColor: "#ffffff"
   },
   formWrapper: {
     flex: 1,
@@ -64,7 +95,7 @@ export const styles = StyleSheet.create({
     backgroundColor: "#ffffff",
     width: "90%",
     height: 170,
-    margin:15,
+    margin: 15,
     alignItems: "stretch",
     borderRadius: 10,
     flexDirection: "row",
@@ -80,7 +111,7 @@ export const styles = StyleSheet.create({
       },
       android: {
         elevation: 5,
-        
+
 
       }
     })
@@ -109,8 +140,8 @@ export const styles = StyleSheet.create({
     marginVertical: -15
 
   },
-  ViewCardHome:{
-    flexDirection:"column"
+  ViewCardHome: {
+    flexDirection: "column"
   }
 });
 

@@ -5,16 +5,15 @@ import React from "react";
 import Home from "../pages/auth/Home";
 import Login from "../pages/auth/Login";
 import SignUp from "../pages/auth/SignUp";
-import CompaniesPrice from "../pages/app/components/slider/index"
-
-
+import CompaniesPrice from "../pages/app/components/Slider/index"
+import Slider from "../pages/app/components/Slider/index";
 
 export default function Routes() {
   const Stack = createNativeStackNavigator();
 
   return (
     <Stack.Navigator
-      initialRouteName="Home"
+      initialRouteName="Slider"
       screenOptions={{
         animation: "slide_from_right",
         headerTransparent: true,
@@ -24,8 +23,9 @@ export default function Routes() {
     >
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="Login" component={Login} />
-      <Stack.Screen name="Sign Up" component={SignUp} />
+      <Stack.Screen name="Registro" component={SignUp} />
       <Stack.Screen name="Venda suas milhas" component={CompaniesPrice} />
+      <Stack.Screen name="Slider" component={Slider} />
     </Stack.Navigator>
   );
 }

@@ -61,9 +61,9 @@ export default function Login() {
         values.password
       );
       if (userData.error) {
-        console.log("sign error", userData);
+        alert(userData.error)
       } else {
-        console.log("sign ok", userData);
+        alert(userData.message)
       }
     } else {
       console.log("login error");
@@ -72,7 +72,7 @@ export default function Login() {
 
   return (
     <View style={styles.formWrapper}>
-      <ScrollView >
+      <ScrollView contentContainerStyle={{ alignItems: 'center', justifyContent: 'center', flex: 1 }}>
         <Formik
           initialValues={{
             name: "",

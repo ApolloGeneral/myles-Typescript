@@ -30,7 +30,7 @@ export default function Login({ navigation }: any) {
   const rememberRef = useRef<any>(null);
 
   const onPressSignUp = () => {
-    navigation.navigate("Sign Up");
+    navigation.navigate("Registro");
   };
 
   const LoginSchema = Yup.object().shape({
@@ -63,8 +63,7 @@ export default function Login({ navigation }: any) {
 
   return (
     <View style={styles.formWrapper}>
-      
-      <ScrollView> 
+      <ScrollView contentContainerStyle={{ alignItems: 'center', justifyContent: 'center', flex: 1 }}>
         {loginError && (
           <ErrorModal
             type={"Login"}

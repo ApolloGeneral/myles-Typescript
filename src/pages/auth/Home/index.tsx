@@ -7,8 +7,7 @@ export default ({ navigation }: any) => {
     <View style={styles.container}>
       <Text>Sign home!</Text>
       <Button title="aaa" onPress={() => navigation.navigate("Login")} />
-      <Button title="bbb" onPress={() => navigation.navigate("SignUp")} />
-      <Button title="ccc" onPress={() => navigation.navigate("Carrossel")} />
+      <Button title="bbb" onPress={() => navigation.navigate("Registro")} />
     </View>
   );
 };

@@ -8,7 +8,7 @@ import { getMilePrice } from "../../services/apis";
 import { styles } from "../../styles/styles";
 
 //Types
-import { ICompany } from "../../types/types";
+import { ICompany } from "../../typings/myles";
 import MilePriceCard from "./components/MilePriceCard";
 
 export default function CompaniesPrice() {

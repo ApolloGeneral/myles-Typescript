@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 
 //Components
-import { Button, View, Text, ScrollView } from "react-native";
+import { View, Text } from "react-native";
 
 //Services
 import { getMilePrice } from "../../services/apis";
 import { styles } from "../../styles/styles";
 
 //Types
-import { ICompany } from "../../types/types";
-import Slider from "./components/slider/index";
+import { ICompany } from "../../typings/myles";
+import Slider from "./components/Slider/index";
 
-export default function Home({ navigation }: any) {
+export default function Home(/* { navigation }: any */) {
   //Companies
   const [companies, setCompanies] = useState<ICompany[]>([]);
 
@@ -35,7 +35,7 @@ export default function Home({ navigation }: any) {
       <Text>Home!</Text>
       {isLoaded ? (
         <>
-         <Slider/>
+          <Slider />
         </>
       ) : (
         <>

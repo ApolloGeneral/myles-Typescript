@@ -1,4 +1,4 @@
-import { milePriceApi, loginApi } from "../utils/api";
+import { milePriceApi } from "../utils/api";
 
 export const getMilePrice = async (company?: string) => {
   let res = await milePriceApi.get(`${company}`);
@@ -18,23 +18,6 @@ export const handleLogin = async (username: string, password: string) => {
     }
   );
   const content = await rawResponse.json();
-
-  /*
-  let res = await loginApi
-    .post("/signin", {
-      headers: { "Content-Type": "application/json" },
-      data: JSON.stringify({
-        username: user.username,
-        password: user.password,
-      }),
-    })
-    .then(function (response) {
-      console.warn(response);
-    })
-    .catch(function (error) {
-      console.error(error);
-    });
-    */
   return content;
 };
 
@@ -63,22 +46,22 @@ export const handleSignUpApi = async (
     role: ["user"],
   });
   const content = await rawResponse.json();
-
-  /*
-  let res = await loginApi
-    .post("/signin", {
-      headers: { "Content-Type": "application/json" },
-      data: JSON.stringify({
-        username: user.username,
-        password: user.password,
-      }),
-    })
-    .then(function (response) {
-      console.warn(response);
-    })
-    .catch(function (error) {
-      console.error(error);
-    });
-    */
   return content;
 };
+
+/*
+let res = await loginApi
+  .post("/signin", {
+    headers: { "Content-Type": "application/json" },
+    data: JSON.stringify({
+      username: user.username,
+      password: user.password,
+    }),
+  })
+  .then(function (response) {
+    console.warn(response);
+  })
+  .catch(function (error) {
+    console.error(error);
+  });
+  */

@@ -4,12 +4,6 @@ export interface IPrices {
   "1k"?: number;
 }
 
-export interface ICompany {
-  company?: string;
-  quantity?: number;
-  prices?: IPrices;
-}
-
 export interface IUserContext {
   isSigned: boolean;
   setIsSigned: (data: IUser | undefined) => void;
@@ -22,4 +16,10 @@ export interface IUser {
   roles: string[];
   type: string;
   username: string;
+}
+
+export interface ICompany {
+  company?: string,
+  quantity?: number,
+  prices?: IPrices
 }
