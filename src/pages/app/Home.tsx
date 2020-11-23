@@ -9,7 +9,6 @@ import { styles } from "../../styles/styles";
 
 //Types
 import { ICompany } from "../../typings/myles";
-import Slider from "./components/Slider/index";
 
 export default function Home(/* { navigation }: any */) {
   //Companies
@@ -35,7 +34,7 @@ export default function Home(/* { navigation }: any */) {
       <Text>Home!</Text>
       {isLoaded ? (
         <>
-          <Slider />
+          <Text>Carregado</Text>
         </>
       ) : (
         <>

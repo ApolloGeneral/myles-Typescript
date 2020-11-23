@@ -48,9 +48,16 @@ export const styles = StyleSheet.create({
   container: {
     display: "flex",
     flex: 1,
-    justifyContent: "space-evenly",
+    justifyContent: 'center',
     alignItems: "center",
-    backgroundColor: "#ffffff"
+    backgroundColor: "#481fa1",
+    color: '#fefefe'
+  },
+  textTitle: {
+    marginVertical: 28,
+    fontSize: 18,
+    color: '#fefefe',
+    fontWeight: 'bold'
   },
   formWrapper: {
     flex: 1,
@@ -70,7 +77,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 20,
 
     backgroundColor: "#481fa160",
-    color: "#FFF",
+    color: "#fefefe",
   },
   rememberMeContainer: {
     display: "flex",
@@ -92,7 +99,7 @@ export const styles = StyleSheet.create({
   },
   // CARD
   CardContext: {
-    backgroundColor: "#ffffff",
+    backgroundColor: "#fefefe",
     width: "90%",
     height: 170,
     margin: 15,

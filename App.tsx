@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { NavigationContainer } from "@react-navigation/native";
 import AuthWrapper from "./AuthWrapper";
 import { UserProvider } from "./src/context/UserContext";
 import SplashScreen from "react-native-splash-screen";
@@ -20,11 +19,11 @@ export default function App() {
   return (
     <>
       {loaded ? (
-        <NavigationContainer>
+        <>
           <UserProvider>
             <AuthWrapper />
           </UserProvider>
-        </NavigationContainer>
+        </>
       ) : (
         <Loading shouldAnimate={animate} />
       )}
